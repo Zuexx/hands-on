@@ -9,17 +9,12 @@ import {
 } from "@remix-run/react";
 
 import tailwindcss from "~/styles/tailwind.css";
-import button from "~/styles/components/button.css";
 
 export let links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
       href: tailwindcss,
-    },
-    {
-      rel: "stylesheet",
-      href: button,
     },
   ];
 };
