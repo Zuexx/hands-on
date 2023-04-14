@@ -1,3 +1,4 @@
+import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,6 +7,22 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
+import tailwindcss from "~/styles/tailwind.css";
+import button from "~/styles/components/button.css";
+
+export let links: LinksFunction = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: tailwindcss,
+    },
+    {
+      rel: "stylesheet",
+      href: button,
+    },
+  ];
+};
 
 export default function App() {
   return (
@@ -17,6 +34,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <span className="btn">Test</span>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
