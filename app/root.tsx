@@ -21,7 +21,7 @@ export let links: LinksFunction = () => {
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="luxury">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -29,7 +29,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <span className="btn">Test</span>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
