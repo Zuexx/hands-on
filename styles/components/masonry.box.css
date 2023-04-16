@@ -1,0 +1,15 @@
+.box {
+  @apply mt-0 mx-0 mb-5 p-2 bg-white overflow-hidden break-inside-avoid;
+}
+
+.box img {
+  @apply min-w-full;
+}
+
+.box h2 {
+  @apply mt-2 mx-0 mb-0 p-0 text-xl;
+}
+
+.box p {
+  @apply m-0 pt-0 px-0 pb-2 text-base;
+}

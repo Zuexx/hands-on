@@ -1,7 +1,19 @@
 import type { LinksFunction } from "@remix-run/node";
 import type { V2_MetaFunction } from "@remix-run/react";
 
-import text from "~/styles/routes/text.css";
+import { MasonryBox, links as box } from "~/components/masonry/masonry.box";
+
+import masonary from "~/styles/components/masonry.css";
+
+import easteregg from "~/images/easteregg.jpg";
+import mountaintrial from "~/images/mountaintrail.jpg";
+import dolphin from "~/images/dolphin.jpg";
+import surfing from "~/images/surfing.jpg";
+import aerial from "~/images/aerial.jpg";
+import sexy from "~/images/sexy.jpg";
+import streetrain from "~/images/streetrain.jpg";
+import fujiyama from "~/images/fujiyama.jpg";
+import motor from "~/images/motor.jpg";
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: "New Remix App" }];
@@ -9,45 +21,26 @@ export const meta: V2_MetaFunction = () => {
 
 export let links: LinksFunction = () => {
   return [
+    ...box(),
     {
       rel: "stylesheet",
-      href: text,
+      href: masonary,
     },
   ];
 };
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <button className="btn">Hello daisyUI</button>
-
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            className="danger"
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="masonry">
+      <MasonryBox image={easteregg} />
+      <MasonryBox image={mountaintrial} />
+      <MasonryBox image={dolphin} />
+      <MasonryBox image={aerial} />
+      <MasonryBox image={surfing} />
+      <MasonryBox image={sexy} />
+      <MasonryBox image={streetrain} />
+      <MasonryBox image={fujiyama} />
+      <MasonryBox image={motor} />
     </div>
   );
 }
