@@ -1,0 +1,7 @@
+.masonry {
+  width: calc(100%-40px);
+  @apply my-5 mx-auto columns-1 gap-10;
+  @apply sm:columns-2 sm:box-border sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-5;
+  @apply md:columns-3;
+  @apply lg:columns-4;
+}
