@@ -2,14 +2,14 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "npm run css:prod && remix build",
+    "build": "pnpm run css:prod && remix build",
     "prebuild": "rimraf ./public/build \"./app/styles/**/*.css\"",
-    "dev": "concurrently \"npm run css:watch\" \"remix dev\"",
+    "dev": "concurrently \"pnpm run css:watch\" \"remix dev\"",
     "start": "remix-serve build",
     "typecheck": "tsc",
     "css:build": "postcss styles --base styles --dir app/styles",
-    "css:watch": "npm run css:build -- --watch",
-    "css:prod": "npm run css:build -- --env production"
+    "css:watch": "pnpm run css:build -- --watch",
+    "css:prod": "pnpm run css:build -- --env production"
   },
   "dependencies": {
     "@remix-run/node": "^1.16.0",
@@ -22,8 +22,8 @@
   "devDependencies": {
     "@remix-run/dev": "^1.16.0",
     "@remix-run/eslint-config": "^1.16.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
     "cssnano": "^6.0.1",
@@ -37,5 +37,10 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
