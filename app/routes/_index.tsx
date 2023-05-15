@@ -20,21 +20,21 @@ export const meta: V2_MetaFunction = () => {
 //   ];
 // };
 
-export let loader = async ({ request }: LoaderArgs) => {
-  const user = await getUser(request);
-  if (user === null)
-    return redirect("/login")
+// export let loader = async ({ request }: LoaderArgs) => {
+//   const user = await getUser(request);
+//   if (user === null)
+//     return redirect("/login")
 
-  return user
-}
+//   return user
+// }
 
 
 export default function Index() {
-  const data = useLoaderData<typeof loader>();
+  // const data = useLoaderData<typeof loader>();
 
   return (
     <Fragment>
-      <h1>Hi</h1>
+      <h1>Index Page</h1>
     </Fragment>
   );
 }

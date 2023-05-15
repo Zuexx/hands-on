@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: ["./app/**/*.{ts,tsx}"],
   theme: {
@@ -6,6 +6,18 @@ module.exports = {
       screens: {
         xs: "480px",
       },
+      animation: {
+        "matrix-scan": "matrix 5s linear infinite"
+      },
+      keyframes: {
+        matrix: {
+          "0%": {transform:"translateY(-100%)"},
+          "100%": {transform:"translateY(100%)"},
+        }
+      },
+      backgroundImage: {
+        "matrix": "linear-gradient(#000, #22c55e, #000)"
+      }
     },
   },
   plugins: [require("daisyui")],

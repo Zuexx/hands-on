@@ -2,14 +2,14 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "pnpm run css:prod && remix build",
+    "build": "npm run css:prod && remix build",
     "prebuild": "rimraf ./public/build \"./app/styles/**/*.css\"",
-    "dev": "concurrently \"pnpm run css:watch\" \"remix dev\"",
+    "dev": "concurrently \"npm run css:watch\" \"remix dev\"",
     "start": "remix-serve build",
     "typecheck": "tsc",
     "css:build": "postcss styles --base styles --dir app/styles",
-    "css:watch": "pnpm run css:build -- --watch",
-    "css:prod": "pnpm run css:build -- --env production"
+    "css:watch": "npm run css:build -- --watch",
+    "css:prod": "npm run css:build -- --env production"
   },
   "dependencies": {
     "@remix-run/node": "^1.16.0",

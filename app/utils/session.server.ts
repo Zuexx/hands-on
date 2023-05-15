@@ -1,8 +1,10 @@
 import { auth } from './firebase';
 import { createCookieSessionStorage, redirect } from '@remix-run/node';
 import {
+    confirmPasswordReset,
     createUserWithEmailAndPassword,
     onAuthStateChanged,
+    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
@@ -38,7 +40,7 @@ const { getSession, commitSession, destroySession } = createCookieSessionStorage
     }
 });
 
-const signIn = async ({ email, password }: EmailPasswordCredential) => {
+const loginInWithEmailAndPassword = async ({ email, password }: EmailPasswordCredential) => {
     let user =
         await signInWithEmailAndPassword(auth, email, password)
             .then(userCredential => userCredential.user)
@@ -54,7 +56,7 @@ const signIn = async ({ email, password }: EmailPasswordCredential) => {
     return user;
 }
 
-const signUp = async ({ email, password }: EmailPasswordCredential) => {
+const registerWithEmailAndPassword = async ({ email, password }: EmailPasswordCredential) => {
     let user =
         await createUserWithEmailAndPassword(auth, email, password)
             .then(userCredential => userCredential.user)
@@ -68,6 +70,18 @@ const signUp = async ({ email, password }: EmailPasswordCredential) => {
             });
 
     return user;
+}
+
+const passwordReset = async (email: string) => {
+    return await sendPasswordResetEmail(auth, email)
+}
+
+const confirmThePasswordReset = async (
+    oobCode: string, newPassword: string
+) => {
+    if (!oobCode && !newPassword) return;
+
+    return await confirmPasswordReset(auth, oobCode, newPassword)
 }
 
 const getUserSession = (request: Request) => {
@@ -136,13 +150,18 @@ const createUserSession = async (
 }
 
 const isAuthError = (user: User | AuthError) => {
+    if (user === undefined)
+        return false;
+
     let error = (user as AuthError).errorCode !== undefined;
     return error;
 }
 
 export {
-    signIn,
-    signUp,
+    loginInWithEmailAndPassword,
+    registerWithEmailAndPassword,
+    passwordReset,
+    confirmThePasswordReset,
     getUser,
     getUserId,
     requireUserId,
