@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Link, useFetcher, useSubmit } from '@remix-run/react';
+import { Link, useFetcher } from '@remix-run/react';
 import type { LinksFunction } from "@remix-run/node";
 
 import style from "~/styles/components/simple.nav.css";
@@ -24,7 +24,7 @@ export default function SimpleNav() {
     <Fragment>
       <div className='container'>
         <Link to="/" className="link">Home</Link>
-        <Link to="/login" className="link">Loggin</Link>
+        <Link to="/login" className="link">Login</Link>
         <Link to="/register" className="link">Register</Link>
         <Link to="/forget" className="link">Forget Password</Link>
         <button className="link" onClick={handleSignOut}>Logout</button>
