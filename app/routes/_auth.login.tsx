@@ -9,7 +9,7 @@ import type { V2_MetaFunction } from "@remix-run/react";
 import type { EmailPasswordCredential } from '~/utils/session.server';
 import { getUserId } from '~/utils/session.server';
 import { createUserSession, isAuthError } from '~/utils/session.server';
-import { loginInWithEmailAndPassword } from '~/utils/session.server';
+import { loginWithEmailAndPassword } from '~/utils/session.server';
 import { SignIn, links as login } from '~/components/auth/signin';
 import type { User } from 'firebase/auth';
 import type { TypedDictionary } from '~/utils/common.type';
@@ -59,7 +59,7 @@ export let action = async ({ request }: ActionArgs) => {
         email, password
     }
 
-    let user = await loginInWithEmailAndPassword(credential)
+    let user = await loginWithEmailAndPassword(credential)
     if (isAuthError(user))
         return user
     else {

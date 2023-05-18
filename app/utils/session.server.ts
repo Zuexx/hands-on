@@ -40,7 +40,7 @@ const { getSession, commitSession, destroySession } = createCookieSessionStorage
     }
 });
 
-const loginInWithEmailAndPassword = async ({ email, password }: EmailPasswordCredential) => {
+const loginWithEmailAndPassword = async ({ email, password }: EmailPasswordCredential) => {
     let user =
         await signInWithEmailAndPassword(auth, email, password)
             .then(userCredential => userCredential.user)
@@ -90,6 +90,9 @@ const getUserSession = (request: Request) => {
 
 const getUserId = async (request: Request) => {
     let session = await getUserSession(request);
+    if (!session)
+        return null;
+
     let userId = session.get("userId");
     if (!userId || typeof userId !== "string")
         return null;
@@ -158,7 +161,7 @@ const isAuthError = (user: User | AuthError) => {
 }
 
 export {
-    loginInWithEmailAndPassword,
+    loginWithEmailAndPassword,
     registerWithEmailAndPassword,
     passwordReset,
     confirmThePasswordReset,

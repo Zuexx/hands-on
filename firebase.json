@@ -1,5 +1,6 @@
 {
   "emulators": {
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "auth": "9099"
   }
 }

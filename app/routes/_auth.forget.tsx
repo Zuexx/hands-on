@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant';
-import { Form, useActionData } from '@remix-run/react';
+import { useActionData } from '@remix-run/react';
 import { Fragment } from 'react';
 import { json, redirect } from '@remix-run/node';
 import type { LinksFunction, LoaderArgs, V2_MetaFunction, ActionArgs } from '@remix-run/node';
@@ -87,7 +87,7 @@ export default function ForgetPassword() {
                 <div className="forget">
                     <div className="content">
                         <h2>Forget Password</h2>
-                        <Form method='post' className='form' noValidate>
+                        <form method='post' className='form' noValidate>
                             <div className="inputBx">
                                 <input type="email" id="email" name="email" required />
                                 <label htmlFor='email'>Email</label>
@@ -96,7 +96,7 @@ export default function ForgetPassword() {
                             <div className="inputBx">
                                 <button type="submit">Reset Your Password</button>
                             </div>
-                        </Form>
+                        </form>
                         {
                             actionData?.successCode && (
                                 <h1> {actionData?.successMessage}</h1>

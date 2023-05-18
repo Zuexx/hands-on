@@ -1,0 +1,7 @@
+.container {
+  @apply z-[10000] min-w-full flex justify-center pt-2 top-0 absolute;
+}
+
+.link {
+  @apply btn btn-secondary mx-2;
+}
