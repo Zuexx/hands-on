@@ -130,6 +130,7 @@ const getUser = async (request: Request) => {
 
 const logout = async (request: Request) => {
     signOut(auth);
+
     let session = await getSession(
         request.headers.get("Cookie")
     );
